@@ -3,12 +3,12 @@ import * as constants from '../../common/constants';
 import { updateObject } from '../../shared/utility';
 
 const initialState = {
-    sourceCrs = constants.CRS_ETRS,
-    sourcePrj = constants.PROJ_NONE,
-    sourceHeightSystem = constants.HEIGHT_ELLPS,
-    targetCrs = constants.CRS_MGI,
-    targetPrj = constants.PROJ_MGI_AUTO,
-    targetHeightSystem = constants.HEIGHT_USAGE,
+    sourceCrs : constants.CRS_ETRS,
+    sourcePrj : constants.PROJ_NONE,
+    sourceHeightSystem : constants.HEIGHT_ELLPS,
+    targetCrs : constants.CRS_MGI,
+    targetPrj : constants.PROJ_MGI_AUTO,
+    targetHeightSystem : constants.HEIGHT_USAGE,
 }
 
 const setTargetCoordinateSystem = (state, action) => {
@@ -48,7 +48,7 @@ const setSourceProjection = (state, action) => {
 }
 
 const reducer = ( state = initialState, action) => {
-    switch ( actoin.type ) {
+    switch ( action.type ) {
         case actionTypes.AUT_SET_TARGET_CRS: return setTargetCoordinateSystem( state, action );
         case actionTypes.AUT_SET_TARGET_HS: return setTargetHeightSystem( state, action );
         case actionTypes.AUT_SET_TARGET_PRJ: return setTargetProjection( state, action );
