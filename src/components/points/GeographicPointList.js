@@ -1,36 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GeocentricPoint from './GeocentricPoint';
+import GeographicPoint from './GeographicPoint';
 
 import '../../hoc/UI/Table.css';
 
-const GeocentricPointList = (props) => {
+const GeographicPointList = (props) => {
   const { pointList } = props;
-  console.log(pointList);
   let renderedPointList = (<tr><td colspan={4} style={{'textAlign': 'center'}}>-- No Points available --</td></tr>);
   if (pointList && pointList.length > 0) {
     renderedPointList = pointList.map( (point,idx) => {
-      return <GeocentricPoint key={idx}
+      return <GeographicPoint key={idx}
         name={point.name} 
-        x={point.x} 
-        y={point.y} 
-        z={point.z} 
+        lon={point.lon} 
+        lat={point.lat} 
+        ele={point.ele} 
       />
     })
   }
   return ( 
     <div>
-      <h2>GeocentricPointList</h2>
+      <h2>GeographicPointList</h2>
       <table className="TablePointList">
         <thead>
           <tr>
             <th className="ColumnPointName">Name</th>
-            <th className="ColumnPointValue">X</th>
-            <th className="ColumnPointValue">Y</th>
-            <th className="ColumnPointValue">Z</th>
+            <th className="ColumnPointValue">Lonitude</th>
+            <th className="ColumnPointValue">Latitude</th>
+            <th className="ColumnPointValue">Elevation</th>
           </tr>
         </thead>
-        <tbody>        
+        <tbody>    
           {renderedPointList}
         </tbody>
       </table>
@@ -38,15 +37,15 @@ const GeocentricPointList = (props) => {
   );
 }
 
-GeocentricPointList.propTypes = {
+GeographicPointList.propTypes = {
   pointList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      x: PropTypes.number,
-      y: PropTypes.number,
-      z: PropTypes.number
+      lon: PropTypes.number,
+      lat: PropTypes.number,
+      ele: PropTypes.number
     })
   )
 }
  
-export default GeocentricPointList;
+export default GeographicPointList;

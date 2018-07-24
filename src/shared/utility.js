@@ -19,3 +19,9 @@ export const removeObjectByIdx = (objectList, objectIdx) => {
     newObjectList.splice(objectIdx, 1);
     return newObjectList;
 }
+
+export const prepareNumber = (valueIn, digits=3, valueNaN='NaN') => {
+    const valueOut = valueIn === undefined || valueIn === '' ? valueNaN : parseFloat(String(valueIn)).toFixed(digits);
+    console.log(valueOut);
+    return valueOut;
+}

@@ -18,6 +18,8 @@ class App extends Component {
         </p>
 
         <PointManager />
+
+        < br/>
         
       </div>
     );

@@ -1,13 +1,13 @@
-import React from 'react';
+// import React from 'react';
 import PropTypes from 'prop-types';
+import { prepareNumber } from '../../shared/utility';
+import { pointAsTableRow } from '../../shared/render';
 
 const GeocentricPoint = (props) => {
-    return ( 
-        <div>
-            <h3>{props.name}</h3>
-            <p>X: {props.x.toFixed(3)}, Y: {props.y.toFixed(3)}, Z: {props.z.toFixed(3)}</p>
-        </div>
-    );
+    const x = prepareNumber(props.x, 3);
+    const y = prepareNumber(props.y, 3);
+    const z = prepareNumber(props.z, 3);
+    return pointAsTableRow(props.name, x, y, z);
 }
 
 GeocentricPoint.propTypes = {

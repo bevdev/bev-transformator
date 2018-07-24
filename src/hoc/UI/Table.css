@@ -1,0 +1,34 @@
+.TablePointListActionsType {
+    /* width: 78%; */
+    text-align: left;
+    padding: 3px;
+}
+
+.TablePointListActionsButton {
+    width: 40px;
+    text-align: center;
+    padding: 3px;
+}
+
+.TablePointListActions {
+    margin: auto;
+    width: 80%;
+}
+
+.TablePointList {
+    margin: auto;
+    width: 80%;
+    border: 1px solid lightgrey;
+}
+
+.ColumnPointValue {
+    width: 22%;
+    text-align: right;
+    padding: 3px;
+}
+
+.ColumnPointName {
+    width: 34%;
+    text-align: left;
+    padding: 3px;
+}

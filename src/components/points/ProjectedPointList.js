@@ -1,36 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GeocentricPoint from './GeocentricPoint';
+import ProjectedPoint from './ProjectedPoint';
 
 import '../../hoc/UI/Table.css';
 
-const GeocentricPointList = (props) => {
+const ProjectedPointList = (props) => {
   const { pointList } = props;
-  console.log(pointList);
   let renderedPointList = (<tr><td colspan={4} style={{'textAlign': 'center'}}>-- No Points available --</td></tr>);
   if (pointList && pointList.length > 0) {
     renderedPointList = pointList.map( (point,idx) => {
-      return <GeocentricPoint key={idx}
+      return <ProjectedPoint key={idx}
         name={point.name} 
-        x={point.x} 
-        y={point.y} 
-        z={point.z} 
+        e={point.e} 
+        n={point.n} 
+        h={point.h} 
       />
     })
   }
   return ( 
     <div>
-      <h2>GeocentricPointList</h2>
+      <h2>ProjectedPointList</h2>
       <table className="TablePointList">
         <thead>
           <tr>
             <th className="ColumnPointName">Name</th>
-            <th className="ColumnPointValue">X</th>
-            <th className="ColumnPointValue">Y</th>
-            <th className="ColumnPointValue">Z</th>
+            <th className="ColumnPointValue">East</th>
+            <th className="ColumnPointValue">North</th>
+            <th className="ColumnPointValue">Height</th>
           </tr>
         </thead>
-        <tbody>        
+        <tbody>    
           {renderedPointList}
         </tbody>
       </table>
@@ -38,15 +37,15 @@ const GeocentricPointList = (props) => {
   );
 }
 
-GeocentricPointList.propTypes = {
+ProjectedPointList.propTypes = {
   pointList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      x: PropTypes.number,
-      y: PropTypes.number,
-      z: PropTypes.number
+      e: PropTypes.number,
+      n: PropTypes.number,
+      h: PropTypes.number
     })
   )
 }
  
-export default GeocentricPointList;
+export default ProjectedPointList;
