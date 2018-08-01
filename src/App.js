@@ -4,6 +4,7 @@ import { Link, Route } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import PointManager from './containers/PointManager';
+import Advanced from './containers/Advanced';
 
 class App extends Component {
 
@@ -20,11 +21,15 @@ class App extends Component {
         </p>
 
         <nav>
-          <Link to="/points">PointManager</Link>
+          <ul>
+            <li><Link to="/points">PointManager</Link></li>
+            <li><Link to="/advanced">Advanced Mode</Link></li>
+          </ul>
         </nav>
         
         <div>
           <Route path="/points" component={PointManager} />
+          <Route path="/advanced" component={Advanced} />
         </div>
 
         < br/>

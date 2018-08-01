@@ -15,7 +15,7 @@
     width: 80%;
 }
 
-.TablePointList {
+.TableDefault {
     margin: auto;
     width: 80%;
     border: 1px solid lightgrey;
@@ -31,4 +31,9 @@
     width: 34%;
     text-align: left;
     padding: 3px;
+}
+
+.ColumnChoiceField {
+    padding: 1px;
+    text-align: left;
 }

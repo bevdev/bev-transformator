@@ -20,7 +20,7 @@ const GeographicPointList = (props) => {
   return ( 
     <div>
       <h2>GeographicPointList</h2>
-      <table className="TablePointList">
+      <table className="TableDefault">
         <thead>
           <tr>
             <th className="ColumnPointName">Name</th>

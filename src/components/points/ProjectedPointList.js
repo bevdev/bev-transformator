@@ -20,7 +20,7 @@ const ProjectedPointList = (props) => {
   return ( 
     <div>
       <h2>ProjectedPointList</h2>
-      <table className="TablePointList">
+      <table className="TableDefault">
         <thead>
           <tr>
             <th className="ColumnPointName">Name</th>

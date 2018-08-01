@@ -14,7 +14,7 @@ export const setTargetFrame = (tfrm) => {
 export const setTargetEllipsoid = (tellps) => {
     return {
         type: actionTypes.ADV_SET_TARGET_ELL,
-        targetEllipsoid: tellps
+        targetEllps: tellps
     }
 }
 
@@ -35,7 +35,7 @@ export const setTargetCoordinateRepresentation = (tcr) => {
 export const setTargetProjection = (tprj) => {
     return {
         type: actionTypes.ADV_SET_TARGET_PRJ,
-        targetProjection: tprj
+        targetPrj: tprj
     }
 }
 
@@ -56,7 +56,7 @@ export const setSourceFrame = (sfrm) => {
 export const setSourceEllipsoid = (sellps) => {
     return {
         type: actionTypes.ADV_SET_SOURCE_ELL,
-        sourceEllipsoid: sellps
+        sourceEllps: sellps
     }
 }
 
@@ -77,7 +77,7 @@ export const setSourceCoordinateRepresentation = (scr) => {
 export const setSourceProjection = (sprj) => {
     return {
         type: actionTypes.ADV_SET_SOURCE_PRJ,
-        sourceProjection: sprj
+        sourcePrj: sprj
     }
 }
 

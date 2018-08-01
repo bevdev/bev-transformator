@@ -3,13 +3,13 @@ import * as constants from '../../common/constants';
 import { updateObject } from '../../shared/utility';
 
 const initialState = {
-    sourceFrm : constants.FRM_ETRS,
+    sourceFrm : constants.FRAME_ETRS89,
     sourcePrj : constants.PROJ_NONE,
     sourceHeightSystem : constants.HEIGHT_ELLPS,
     sourceEllps : constants.ELLPS_GRS80,
     sourceMeridian: constants.MERIDIAN_GREENWHICH,
-    targetFrm : constants.FRM_MGI,
-    targetPrj : constants.PROJ_MGI_AUTO,
+    targetFrm : constants.FRAME_MGI,
+    targetPrj : constants.PROJ_MGI_GK34,
     targetHeightSystem : constants.HEIGHT_USAGE,
     targetEllps : constants.ELLPS_BESSEL,
     targetMeridian: constants.MERIDIAN_FERRO
@@ -41,7 +41,7 @@ const setTargetHeightSystem = (state, action) => {
 
 const setTargetProjection = (state, action) => {
     return updateObject( state, {
-        targetProjection: action.targetProjection
+        targetPrj: action.targetPrj
     });
 }
 
@@ -71,7 +71,7 @@ const setSourceHeightSystem = (state, action) => {
 
 const setSourceProjection = (state, action) => {
     return updateObject( state, {
-        sourceProjection: action.sourceProjection
+        sourcePrj: action.sourcePrj
     });
 }
 
