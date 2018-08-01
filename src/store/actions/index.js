@@ -11,11 +11,13 @@ export {
 
 export {
     setTargetFrame,
+    setTargetEpoch,
     setTargetEllipsoid,
     setTargetMeridian,
     setTargetProjection,
 
     setSourceFrame,
+    setSourceEpoch,
     setSourceEllipsoid,
     setSourceMeridian,
     setSourceProjection,

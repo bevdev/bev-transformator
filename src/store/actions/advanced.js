@@ -11,6 +11,13 @@ export const setTargetFrame = (tfrm) => {
     }
 }
 
+export const setTargetEpoch = (tepo) => {
+    return {
+        type: actionTypes.ADV_SET_TARGET_EPOCH,
+        targetEpoch: tepo
+    }
+}
+
 export const setTargetEllipsoid = (tellps) => {
     return {
         type: actionTypes.ADV_SET_TARGET_ELL,
@@ -50,6 +57,13 @@ export const setSourceFrame = (sfrm) => {
     return {
         type: actionTypes.ADV_SET_SOURCE_FRM,
         sourceFrame: sfrm
+    }
+}
+
+export const setSourceEpoch = (sepo) => {
+    return {
+        type: actionTypes.ADV_SET_SOURCE_EPOCH,
+        sourceEpoch: sepo
     }
 }
 

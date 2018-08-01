@@ -8,17 +8,25 @@ const initialState = {
     sourceHeightSystem : constants.HEIGHT_ELLPS,
     sourceEllps : constants.ELLPS_GRS80,
     sourceMeridian: constants.MERIDIAN_GREENWHICH,
+    sourceEpoch: 2002.56,
     targetFrm : constants.FRAME_MGI,
     targetPrj : constants.PROJ_MGI_GK34,
     targetHeightSystem : constants.HEIGHT_USAGE,
     targetEllps : constants.ELLPS_BESSEL,
-    targetMeridian: constants.MERIDIAN_FERRO
+    targetMeridian: constants.MERIDIAN_FERRO,
+    targetEpoch: 2002.56,
 }
 
 const setTargetFrame = (state, action) => {
     return updateObject( state, {
         targetFrm: action.targetFrame
     });
+}
+
+const setTargetEpoch = (state, action) => {
+    return updateObject( state, {
+        targetEpoch: action.targetEpoch
+    })
 }
 
 const setTargetEllps = (state, action) => {
@@ -51,6 +59,12 @@ const setSourceFrame = (state, action) => {
     });
 }
 
+const setSourceEpoch = (state, action) => {
+    return updateObject( state, {
+        sourceEpoch: action.sourceEpoch
+    })
+}
+
 const setSourceEllps = (state, action) => {
     return updateObject( state, {
         sourceEllps: action.sourceEllps
@@ -78,12 +92,14 @@ const setSourceProjection = (state, action) => {
 const reducer = ( state = initialState, action) => {
     switch ( action.type ) {
         case actionTypes.ADV_SET_TARGET_FRM: return setTargetFrame( state, action );
+        case actionTypes.ADV_SET_TARGET_EPOCH: return setTargetEpoch( state, action );
         case actionTypes.ADV_SET_TARGET_ELL: return setTargetEllps( state, action );
         case actionTypes.ADV_SET_TARGET_MRD: return setTargetMeridian( state, action );
         case actionTypes.ADV_SET_TARGET_HS: return setTargetHeightSystem( state, action );
         case actionTypes.ADV_SET_TARGET_PRJ: return setTargetProjection( state, action );
 
         case actionTypes.ADV_SET_SOURCE_FRM: return setSourceFrame( state, action );
+        case actionTypes.ADV_SET_SOURCE_EPOCH: return setSourceEpoch( state, action );
         case actionTypes.ADV_SET_SOURCE_ELL: return setSourceEllps( state, action );
         case actionTypes.ADV_SET_SOURCE_MRD: return setSourceMeridian( state, action );
         case actionTypes.ADV_SET_SOURCE_HS: return setSourceHeightSystem( state, action );

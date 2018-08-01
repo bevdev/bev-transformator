@@ -39,9 +39,10 @@ class CRS extends Component {
     const choiceEllps = this.props.ellps;
     const choiceMeridian = this.props.meridian;
     const choiceProjection = this.props.projection;
+    const choiceEpoch = this.props.epoch;
 
-    const enabledMeridian = !this.props.ellps ? true : false;
-    const enabledProjection = (!this.props.meridian ? true : false) && enabledMeridian;
+    const enabledMeridian = this.props.ellps ? true : false;
+    const enabledProjection = (this.props.meridian ? true : false) && enabledMeridian;
 
     return (
       <div>
@@ -53,16 +54,20 @@ class CRS extends Component {
                 <td className="ColumnChoiceField"> <select style={{width: "100%"}} value={choiceFrame} name="frame" onChange={this.props.handleChangeFrame} required>{frameChoices}</select> </td>
               </tr>
               <tr>
+                <td className="ColumnPointName"> <label htmlFor="epoch">Epoch:</label> </td>
+                <td className="ColumnChoiceField"> <input type="text" style={{width: "100%"}} value={choiceEpoch} name="epoch" onChange={this.props.handleChangeEpoch} required /> </td>
+              </tr>
+              <tr>
                 <td className="ColumnPointName"> <label htmlFor="ellipsoid">Ellipsoid:</label> </td>
                 <td className="ColumnChoiceField"> <select style={{width: "100%"}} value={choiceEllps} name="ellipsoid" onChange={this.props.handleChangeEllps}>{ellpsChoices}</select> </td>
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="merdian">Meridian:</label> </td>
-                <td className="ColumnChoiceField"> <select disabled={enabledMeridian} style={{width: "100%"}} value={choiceMeridian} name="meridian" onChange={this.props.handleChangeMeridian}>{merdidianChoices}</select> </td>
+                <td className="ColumnChoiceField"> <select disabled={!enabledMeridian} style={{width: "100%"}} value={choiceMeridian} name="meridian" onChange={this.props.handleChangeMeridian}>{merdidianChoices}</select> </td>
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="projection">Projection:</label> </td>
-                <td className="ColumnChoiceField"> <select disabled={enabledProjection} style={{width: "100%"}} value={choiceProjection} name="projection" onChange={this.props.handleChangeProjection}>{projectionChoices}</select> </td>
+                <td className="ColumnChoiceField"> <select disabled={!enabledProjection} style={{width: "100%"}} value={choiceProjection} name="projection" onChange={this.props.handleChangeProjection}>{projectionChoices}</select> </td>
               </tr>
             </tbody>
           </table>
