@@ -35,7 +35,7 @@ export const setTargetHeightSystem = (ths) => {
 export const setSourceCoordinateSystem = (scrs) => {
     return {
         type: actionTypes.AUT_SET_SOURCE_CRS,
-        sourceCoordinateSystem: tcrs
+        sourceCoordinateSystem: scrs
     }
 }
 

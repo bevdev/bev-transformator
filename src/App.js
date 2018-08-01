@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link, Route } from "react-router-dom";
+
 import logo from './logo.svg';
 import './App.css';
 import PointManager from './containers/PointManager';
@@ -17,7 +19,13 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <PointManager />
+        <nav>
+          <Link to="/points">PointManager</Link>
+        </nav>
+        
+        <div>
+          <Route path="/points" component={PointManager} />
+        </div>
 
         < br/>
         

@@ -119,6 +119,9 @@ class PointManager extends Component {
 
   render() { 
 
+    const buttonGreen = 'ButtonDefault ButtonGreen';
+    const buttonRed = 'ButtonDefault ButtonRed';
+
     const lenGeographic = this.props.pointsGeographic ? this.props.pointsGeographic.length : 0;
     const lenGeocentric = this.props.pointsGeocentric ? this.props.pointsGeocentric.length : 0;
     const lenProjected = this.props.pointsProjected ? this.props.pointsProjected.length : 0;
@@ -127,18 +130,18 @@ class PointManager extends Component {
         <tbody>
           <tr>
             <td className='TablePointListActionsType'>Geocentric Point ({lenGeocentric})</td>
-            <td className='TablePointListActionsButton'><button className="ButtonDefault" onClick={this.addGeocentricPointHandler}>+</button></td>
-            <td className='TablePointListActionsButton'><button className="ButtonDefault" style={{'backgroundColor': 'red'}}onClick={this.remGeocentricPointHandler}>-</button></td>
+            <td className='TablePointListActionsButton'><button className={buttonGreen} onClick={this.addGeocentricPointHandler}>+</button></td>
+            <td className='TablePointListActionsButton'><button className={buttonRed}   onClick={this.remGeocentricPointHandler}>-</button></td>
           </tr>
           <tr>
             <td className='TablePointListActionsType'>Geographic Point ({lenGeographic})</td>
-            <td className='TablePointListActionsButton'><button className="ButtonDefault" onClick={this.addGeographicPointHandler}>+</button></td>
-            <td className='TablePointListActionsButton'><button className="ButtonDefault" style={{'backgroundColor': 'red'}}onClick={this.remGeographicPointHandler}>-</button></td>
+            <td className='TablePointListActionsButton'><button className={buttonGreen} onClick={this.addGeographicPointHandler}>+</button></td>
+            <td className='TablePointListActionsButton'><button className={buttonRed}   onClick={this.remGeographicPointHandler}>-</button></td>
           </tr>
           <tr>
             <td className='TablePointListActionsType'>Projected Point ({lenProjected})</td>
-            <td className='TablePointListActionsButton'><button className="ButtonDefault" onClick={this.addProjectedPointHandler}>+</button></td>
-            <td className='TablePointListActionsButton'><button className="ButtonDefault" style={{'backgroundColor': 'red'}}onClick={this.remProjectedPointHandler}>-</button></td>
+            <td className='TablePointListActionsButton'><button className={buttonGreen} onClick={this.addProjectedPointHandler}>+</button></td>
+            <td className='TablePointListActionsButton'><button className={buttonRed}   onClick={this.remProjectedPointHandler}>-</button></td>
           </tr>
         </tbody>
       </table>
