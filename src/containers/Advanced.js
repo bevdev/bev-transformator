@@ -36,6 +36,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onChangeTargetEllps: (obj) => dispatch(actions.setTargetEllipsoid(obj)),
         onChangeTargetMeridian: (obj) => dispatch(actions.setTargetMeridian(obj)),
         onChangeTargetProjection: (obj) => dispatch(actions.setTargetProjection(obj)),
+
+        onInit: () => dispatch(actions.apiUpdateAdvancedLists()),
     }
 }
 
@@ -47,6 +49,10 @@ class Advanced extends Component {
         this.state = {
             targetPointList: null
         }
+    }
+
+    componentDidMount() {
+        this.props.onInit();
     }
 
     onHandleChange(event, side, attr) {

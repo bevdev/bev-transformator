@@ -4,6 +4,15 @@ import PropTypes from 'prop-types';
 
 import '../../hoc/UI/Table.css';
 
+const mapStateToProps = (state) => {
+  return {
+    frameList: state.api.frameList,
+    ellpsList: state.api.ellpsList,
+    meridianList: state.api.meridianList,
+    projectionList: state.api.prjList,
+  };
+}
+
 class CRS extends Component {
 
   render() {
@@ -39,9 +48,10 @@ class CRS extends Component {
 
     const enableEpoch = this.props.enableEpoch !== undefined ? this.props.enableEpoch : true;
 
-    const enableMeridian = this.props.enableMeridian !== undefined ? this.props.enableMeridian : true;
-    const enabledMeridian = (enableMeridian && this.props.ellps) ? true : false;
-    const enabledProjection = (this.props.meridian ? true : false) && enabledMeridian;
+    let enableMeridian = this.props.enableMeridian !== undefined ? this.props.enableMeridian : true;
+    enableMeridian = (enableMeridian && this.props.ellps) ? true : false;
+
+    const enableProjection = ((this.props.meridian ? true : false) && enableMeridian) || this.props.enableProjection;
 
     return (
       <div>
@@ -62,11 +72,11 @@ class CRS extends Component {
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="merdian">Meridian:</label> </td>
-                <td className="ColumnChoiceField"> <select disabled={!enabledMeridian} style={{width: "100%"}} value={choiceMeridian} name="meridian" onChange={this.props.handleChangeMeridian}>{meridianChoices}</select> </td>
+                <td className="ColumnChoiceField"> <select disabled={!enableMeridian} style={{width: "100%"}} value={choiceMeridian} name="meridian" onChange={this.props.handleChangeMeridian}>{meridianChoices}</select> </td>
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="projection">Projection:</label> </td>
-                <td className="ColumnChoiceField"> <select disabled={!enabledProjection} style={{width: "100%"}} value={choiceProjection} name="projection" onChange={this.props.handleChangeProjection}>{projectionChoices}</select> </td>
+                <td className="ColumnChoiceField"> <select disabled={!enableProjection} style={{width: "100%"}} value={choiceProjection} name="projection" onChange={this.props.handleChangeProjection}>{projectionChoices}</select> </td>
               </tr>
             </tbody>
           </table>
@@ -84,16 +94,4 @@ CRS.propTypes = {
   // epoch: PropTypes.epoch,
 };
 
-function mapStateToProps(state) {
-  return {
-    frameList: state.api.frameList,
-    ellpsList: state.api.ellpsList,
-    meridianList: state.api.meridianList,
-    projectionList: state.api.prjList,
-  };
-}
-
-
-export default connect(
-  mapStateToProps,
-)(CRS);
+export default connect(mapStateToProps, null)(CRS);

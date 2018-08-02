@@ -10,6 +10,12 @@ export {
 } from './points';
 
 export {
+    apiUpdateAdvancedLists,
+    apiUpdateHeightList,
+    apiUpdateAustrianLists,
+} from './api';
+
+export {
     setTargetFrame,
     setTargetEpoch,
     setTargetEllipsoid,
@@ -32,4 +38,7 @@ export {
     setAutSourceMeridian,
     setAutTargetHeightSystem,
     setAutSourceHeightSystem,
+    setAutTargetProjection,
+    setAutSourceProjection,
+    setAutTransformationMethod,
 } from './austrian';

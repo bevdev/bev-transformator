@@ -9,14 +9,15 @@ const initialState = {
     sourcePrj : constants.PROJ_NONE,
     sourceHeightSystem : constants.HEIGHT_ELLPS,
     sourceEpoch: 2002.56,
-    sourceMeridian: constants.MERIDIAN_GREENWHICH,
+    sourceMeridian: constants.MERIDIAN_GREENWICH,
     targetCrs : constants.CRS_MGI,
     targetFrame : constants.FRAME_MGI,
     targetEllps: constants.ELLPS_BESSEL,
     targetPrj : constants.PROJ_MGI_AUTO,
     targetHeightSystem : constants.HEIGHT_USAGE,
     targetEpoch: 2002.56,
-    targetMeridian: constants.MERIDIAN_GREENWHICH
+    targetMeridian: constants.MERIDIAN_GREENWICH,
+    transformationMethod: constants.TM_GIS_GRID,
 }
 
 const setAutTargetCoordinateSystem = (state, action) => {
@@ -53,6 +54,14 @@ const setAutTargetProjection = (state, action) => {
     return updateObject( state, {
         targetProjection: action.targetProjection
     });
+}
+
+const setAutTransformationMethod = (state, action) => {
+    console.log(state)
+    console.log(action)
+    return updateObject( state, {
+        transformationMethod: action.transformationMethod
+    })
 }
 
 const setAutSourceCoordinateSystem = (state, action) => {
@@ -106,6 +115,9 @@ const reducer = ( state = initialState, action) => {
         case actionTypes.AUT_SET_SOURCE_MRDN: return setAutSourceMeridian( state, action );
         case actionTypes.AUT_SET_SOURCE_HS: return setAutSourceHeightSystem( state, action );
         case actionTypes.AUT_SET_SOURCE_PRJ: return setAutSourceProjection( state, action );
+
+        case actionTypes.AUT_SET_TM: return setAutTransformationMethod( state, action );
+
         default:
             return state;
     } 

@@ -7,7 +7,7 @@ const initialState = {
     sourcePrj : constants.PROJ_NONE,
     sourceHeightSystem : constants.HEIGHT_ELLPS,
     sourceEllps : constants.ELLPS_GRS80,
-    sourceMeridian: constants.MERIDIAN_GREENWHICH,
+    sourceMeridian: constants.MERIDIAN_GREENWICH,
     sourceEpoch: 2002.56,
     targetFrm : constants.FRAME_MGI,
     targetPrj : constants.PROJ_MGI_GK34,

@@ -6,7 +6,7 @@ import '../../hoc/UI/Table.css';
 
 const GeographicPointList = (props) => {
   const { pointList } = props;
-  let renderedPointList = (<tr><td colspan={4} style={{'textAlign': 'center'}}>-- No Points available --</td></tr>);
+  let renderedPointList = (<tr><td colSpan={4} style={{'textAlign': 'center'}}>-- No Points available --</td></tr>);
   if (pointList && pointList.length > 0) {
     renderedPointList = pointList.map( (point,idx) => {
       return <GeographicPoint key={idx}

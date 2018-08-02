@@ -32,14 +32,14 @@ export const setAutTargetMeridian = (meridian) => {
     }
 }
 
-export const setAutAutTargetCoordinateRepresentation = (tcr) => {
+export const setAutTargetCoordinateRepresentation = (tcr) => {
     return {
         type: actionTypes.AUT_SET_TARGET_CR,
         targetCoordinateRepresentation: tcr
     }
 }
 
-export const setAutAutTargetProjection = (tprj) => {
+export const setAutTargetProjection = (tprj) => {
     return {
         type: actionTypes.AUT_SET_TARGET_PRJ,
         targetProjection: tprj
@@ -50,6 +50,13 @@ export const setAutTargetHeightSystem = (ths) => {
     return {
         type: actionTypes.AUT_SET_TARGET_HS,
         targetHeightSystem: ths
+    }
+}
+
+export const setAutTransformationMethod = (tm) => {
+    return {
+        type: actionTypes.AUT_SET_TM,
+        transformationMethod: tm
     }
 }
 

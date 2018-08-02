@@ -9,7 +9,6 @@ import Austrian from './containers/Austrian';
 
 class App extends Component {
 
-
   render() {
     return (
       <div className="App">
@@ -22,11 +21,9 @@ class App extends Component {
         </p>
 
         <nav>
-          <ul>
-            <li><Link to="/points">PointManager</Link></li>
-            <li><Link to="/advanced">Advanced Mode</Link></li>
-            <li><Link to="/austrian">Austrian Mode</Link></li>
-          </ul>
+          <button><Link to="/points">PointManager</Link></button>
+          <button><Link to="/advanced">Advanced Mode</Link></button>
+          <button><Link to="/austrian">Austrian Mode</Link></button>
         </nav>
         
         <div>

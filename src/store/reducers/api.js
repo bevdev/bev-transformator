@@ -14,7 +14,7 @@ const initialState = {
         { id: constants.ELLPS_GRS80, name: 'GRS80'}
     ],
     meridianList : [
-        { id: constants.MERIDIAN_GREENWHICH, name: "Greenwhich"},
+        { id: constants.MERIDIAN_GREENWICH, name: "Greenwhich"},
         { id: constants.MERIDIAN_FERRO, name: 'Ferro'}
     ],
     prjList : [
@@ -23,54 +23,66 @@ const initialState = {
         { id: constants.PROJ_MGI_GK34, name: 'MGI_GK_M34'},
     ],
     heightSystemList: [
-        { id: constants.HEIGHT_ELLPS, name: 'Ellipsoidic'},
-        { id: constants.HEIGHT_ORTHO, name: 'Orthometric'},
-        { id: constants.HEIGHT_USAGE, name: 'Common used'},
+        // { id: constants.HEIGHT_ELLPS, name: 'Ellipsoidic'},
+        // { id: constants.HEIGHT_ORTHO, name: 'Orthometric'},
+        // { id: constants.HEIGHT_USAGE, name: 'Common used'},
     ],
     transformationMethodList: [
         { id: constants.TM_GIS_GRID, name: 'GIS Grid (sigma: 0.15m)'},
         { id: constants.TM_SEVEN_PARAM, name: '7-Parameter (sigma: 1.50m)'},
+    ],
+    verticalGridList: [
+        // { id: constants.VG_GEOID_GRS80, name: 'Ell. -> Ortho. GRS80'},
+        // { id: constants.VG_GEOID_BESSEL, name: 'Ell. -> Ortho. Bessel'},
+        // { id: constants.VG_HEIGHT, name: 'Orth. -> Gebr. GRS80'},
+        // { id: constants.VG_HEIGHT_PLUS, name: 'Ell. -> Gebr. GRS80'},
     ]
 }
 
-const getFrameList = (state) => {
-    const newList = [];
-    // TODO ask API for frames ...
+const apiUpdateFrameList = (state, action) => {
     return updateObject( state, {
-        frameList: newList
+        frameList: action.frameList
     });
 }
 
-const getEllipsoidList = (state) => {
-    const newList = [];
-    // TODO ask API for ellipsoids ...
+const apiUpdateEllipsoidList = (state, action) => {
     return updateObject( state, {
-        ellpsList: newList
+        ellpsList: action.ellpsList
+    });
+}
+
+const apiUpdateMeridianList = (state, action) => {
+    return updateObject( state, {
+        meridianList: action.meridianList
     })
 }
 
-const getProjectionList = (state) => {
-    const newList = [];
-    // TODO ask API for projections ...
+const apiUpdateProjectionList = (state, action) => {
     return updateObject( state, {
-        prjList: newList
+        prjList: action.prjList
     })
 }
 
-const getMerdianList = (state) => {
-    const newList = [];
-    // TODO ask API for merdians ...
+const apiUpdateVerticalGridList = (state, action) => {
     return updateObject( state, {
-        merdianList: newList
+        verticalGridList: action.verticalGridList
+    })
+}
+
+const apiUpdateHeightSystemList = (state, action) => {
+    return updateObject( state,  {
+        heightSystemList: action.heightSystemList
     })
 }
 
 const reducer = ( state = initialState, action) => {
     switch ( action.type ) {
-        case actionTypes.API_GET_FRAME_LIST: return getFrameList( state );
-        case actionTypes.API_GET_ELLIPSOID_LIST: return getEllipsoidList( state );
-        case actionTypes.API_GET_PROJECTION_LIST: return getProjectionList( state );
-        case actionTypes.API_GET_MERIDIAN_LIST: return getMerdianList( state );
+        case actionTypes.API_UPDATE_FRAME_LIST: return apiUpdateFrameList( state, action );
+        case actionTypes.API_UPDATE_ELLPS_LIST: return apiUpdateEllipsoidList( state, action );
+        case actionTypes.API_UPDATE_MERIDIAN_LIST: return apiUpdateMeridianList( state, action );
+        case actionTypes.API_UPDATE_PROJECTION_LIST: return apiUpdateProjectionList( state, action );
+        case actionTypes.API_UPDATE_VERTICAL_GRID_LIST: return apiUpdateVerticalGridList( state, action );
+        case actionTypes.API_UPDATE_HEIGHT_SYSTEM_LIST: return apiUpdateHeightSystemList( state, action );
         
         default:
             return state;
