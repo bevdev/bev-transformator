@@ -22,3 +22,14 @@ export {
     setSourceMeridian,
     setSourceProjection,
 } from './advanced';
+
+export {
+    setAutTargetFrame,
+    setAutSourceFrame,
+    setAutTargetEllps,
+    setAutSourceEllps,
+    setAutTargetMeridian,
+    setAutSourceMeridian,
+    setAutTargetHeightSystem,
+    setAutSourceHeightSystem,
+} from './austrian';

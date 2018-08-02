@@ -19,7 +19,7 @@ const ProjectedPointList = (props) => {
   }
   return ( 
     <div>
-      <h2>ProjectedPointList</h2>
+      {/* <h2>ProjectedPointList</h2> */}
       <table className="TableDefault">
         <thead>
           <tr>

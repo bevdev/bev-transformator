@@ -3,12 +3,50 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CRS from '../components/CRS/CRS';
 import * as actions from '../store/actions';
+import GeocentricPointManager from '../components/points/GeocentricPointManager';
+import GeographicPointManager from '../components/points/GeographicPointManager';
+import ProjectedPointManager from '../components/points/ProjectedPointManager';
+
+function mapStateToProps(state) {
+    return {
+        sourceFrame: state.advanced.sourceFrm,
+        sourceEpoch: state.advanced.sourceEpoch,
+        sourceEllps: state.advanced.sourceEllps,
+        sourceMeridian: state.advanced.sourceMeridian,
+        sourceProjection: state.advanced.sourcePrj,
+
+        targetFrame: state.advanced.targetFrm,
+        targetEpoch: state.advanced.targetEpoch,
+        targetEllps: state.advanced.targetEllps,
+        targetMeridian: state.advanced.targetMeridian,
+        targetProjection: state.advanced.targetPrj,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onChangeSourceFrame: (obj) => dispatch(actions.setSourceFrame(obj)),
+        onChangeSourceEpoch: (obj) => dispatch(actions.setSourceEpoch(obj)),
+        onChangeSourceEllps: (obj) => dispatch(actions.setSourceEllipsoid(obj)),
+        onChangeSourceMeridian: (obj) => dispatch(actions.setSourceMeridian(obj)),
+        onChangeSourceProjection: (obj) => dispatch(actions.setSourceProjection(obj)),
+
+        onChangeTargetFrame: (obj) => dispatch(actions.setTargetFrame(obj)),
+        onChangeTargetEpoch: (obj) => dispatch(actions.setTargetEpoch(obj)),
+        onChangeTargetEllps: (obj) => dispatch(actions.setTargetEllipsoid(obj)),
+        onChangeTargetMeridian: (obj) => dispatch(actions.setTargetMeridian(obj)),
+        onChangeTargetProjection: (obj) => dispatch(actions.setTargetProjection(obj)),
+    }
+}
 
 class Advanced extends Component {
 
     constructor(props) {
         super(props);
         this.onHandleChange = this.onHandleChange.bind(this);
+        this.state = {
+            targetPointList: null
+        }
     }
 
     onHandleChange(event, side, attr) {
@@ -55,11 +93,15 @@ class Advanced extends Component {
         return handler(event.target.value)
     }
 
-    removeMeridian() {
-        this.props.onChangeSourceMeridian(null)
-    }
-
     render() {
+
+        let pointManager = <GeocentricPointManager />;
+        if (this.props.sourceEllps) {
+            pointManager = <GeographicPointManager />;
+        }
+        if (this.props.sourceProjection) {
+            pointManager = <ProjectedPointManager />;
+        }
 
         return (
             <div>
@@ -88,41 +130,12 @@ class Advanced extends Component {
                   handleChangeEllps={event => this.onHandleChange(event, "target", "ellps")}
                   handleChangeMeridian={event => this.onHandleChange(event, "target", "meridian")}
                   handleChangeProjection={event => this.onHandleChange(event, "target", "projection")}/>
+                <h2>Zu Transformierende Punkte</h2>
+                {pointManager}
+                <br />
+                <button>Transformiere</button>
             </div>
         );
-    }
-}
-
-
-function mapStateToProps(state) {
-    return {
-        sourceFrame: state.advanced.sourceFrm,
-        sourceEpoch: state.advanced.sourceEpoch,
-        sourceEllps: state.advanced.sourceEllps,
-        sourceMeridian: state.advanced.sourceMeridian,
-        sourceProjection: state.advanced.sourcePrj,
-
-        targetFrame: state.advanced.targetFrm,
-        targetEpoch: state.advanced.targetEpoch,
-        targetEllps: state.advanced.targetEllps,
-        targetMeridian: state.advanced.targetMeridian,
-        targetProjection: state.advanced.targetPrj,
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onChangeSourceFrame: (obj) => dispatch(actions.setSourceFrame(obj)),
-        onChangeSourceEpoch: (obj) => dispatch(actions.setSourceEpoch(obj)),
-        onChangeSourceEllps: (obj) => dispatch(actions.setSourceEllipsoid(obj)),
-        onChangeSourceMeridian: (obj) => dispatch(actions.setSourceMeridian(obj)),
-        onChangeSourceProjection: (obj) => dispatch(actions.setSourceProjection(obj)),
-
-        onChangeTargetFrame: (obj) => dispatch(actions.setTargetFrame(obj)),
-        onChangeTargetEpoch: (obj) => dispatch(actions.setTargetEpoch(obj)),
-        onChangeTargetEllps: (obj) => dispatch(actions.setTargetEllipsoid(obj)),
-        onChangeTargetMeridian: (obj) => dispatch(actions.setTargetMeridian(obj)),
-        onChangeTargetProjection: (obj) => dispatch(actions.setTargetProjection(obj)),
     }
 }
 

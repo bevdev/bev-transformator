@@ -20,7 +20,7 @@ const GeocentricPointList = (props) => {
   }
   return ( 
     <div>
-      <h2>GeocentricPointList</h2>
+      {/* <h2>GeocentricPointList</h2> */}
       <table className="TableDefault">
         <thead>
           <tr>

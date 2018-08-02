@@ -22,6 +22,15 @@ const initialState = {
         { id: constants.PROJ_MGI_GK31, name: 'MGI_GK_M31'},
         { id: constants.PROJ_MGI_GK34, name: 'MGI_GK_M34'},
     ],
+    heightSystemList: [
+        { id: constants.HEIGHT_ELLPS, name: 'Ellipsoidic'},
+        { id: constants.HEIGHT_ORTHO, name: 'Orthometric'},
+        { id: constants.HEIGHT_USAGE, name: 'Common used'},
+    ],
+    transformationMethodList: [
+        { id: constants.TM_GIS_GRID, name: 'GIS Grid (sigma: 0.15m)'},
+        { id: constants.TM_SEVEN_PARAM, name: '7-Parameter (sigma: 1.50m)'},
+    ]
 }
 
 const getFrameList = (state) => {

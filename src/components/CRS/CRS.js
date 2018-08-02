@@ -6,31 +6,27 @@ import '../../hoc/UI/Table.css';
 
 class CRS extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      frame: this.props.frame,
-      ellps: this.props.ellps,
-      meridian: this.props.meridian
-    }
-  }
-
   render() {
 
-    const frameChoices = this.props.frameList.map( obj => {
+    const frameChoiceArray = this.props.frameChoices ? this.props.frameChoices : this.props.frameList
+    const frameChoices = frameChoiceArray.map( obj => {
       return <option key={obj.id} value={obj.id}>{obj.name}</option>
     })
-    const ellpsChoices = this.props.ellpsList.map( obj => {
+
+    const ellpsChoiceArray = this.props.ellpsChoices ? this.props.ellpsChoices : this.props.ellpsList;
+    const ellpsChoices = ellpsChoiceArray.map( obj => {
       return <option key={obj.id} value={obj.id}>{obj.name}</option>
     });
     ellpsChoices.unshift(<option key="NaN" value="">-- No Ellipsoid --</option>)
 
-    const merdidianChoices = this.props.meridianList.map( obj => {
+    const meridianChoiceArray = this.props.meridianChoices ? this.props.meridianChoices : this.props.meridianList;
+    const meridianChoices = meridianChoiceArray.map( obj => {
       return <option key={obj.id} value={obj.id}>{obj.name}</option>
     });
-    merdidianChoices.unshift(<option key="NaN" value="">-- No Meridian --</option>)
+    meridianChoices.unshift(<option key="NaN" value="">-- No Meridian --</option>)
 
-    const projectionChoices = this.props.projectionList.map( obj => {
+    const projectionChoiceArray = this.props.projectionChoices ? this.props.projectionChoices : this.props.projectionList;
+    const projectionChoices = projectionChoiceArray.map( obj => {
       return <option key={obj.id} value={obj.id}>{obj.name}</option>
     });
     projectionChoices.unshift(<option key="NaN" value="">-- No Projection --</option>)
@@ -41,7 +37,10 @@ class CRS extends Component {
     const choiceProjection = this.props.projection;
     const choiceEpoch = this.props.epoch;
 
-    const enabledMeridian = this.props.ellps ? true : false;
+    const enableEpoch = this.props.enableEpoch !== undefined ? this.props.enableEpoch : true;
+
+    const enableMeridian = this.props.enableMeridian !== undefined ? this.props.enableMeridian : true;
+    const enabledMeridian = (enableMeridian && this.props.ellps) ? true : false;
     const enabledProjection = (this.props.meridian ? true : false) && enabledMeridian;
 
     return (
@@ -55,7 +54,7 @@ class CRS extends Component {
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="epoch">Epoch:</label> </td>
-                <td className="ColumnChoiceField"> <input type="text" style={{width: "100%"}} value={choiceEpoch} name="epoch" onChange={this.props.handleChangeEpoch} required /> </td>
+                <td className="ColumnChoiceField"> <input type="text" style={{width: "100%"}} value={choiceEpoch} name="epoch" onChange={this.props.handleChangeEpoch} required disabled={!enableEpoch} /> </td>
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="ellipsoid">Ellipsoid:</label> </td>
@@ -63,7 +62,7 @@ class CRS extends Component {
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="merdian">Meridian:</label> </td>
-                <td className="ColumnChoiceField"> <select disabled={!enabledMeridian} style={{width: "100%"}} value={choiceMeridian} name="meridian" onChange={this.props.handleChangeMeridian}>{merdidianChoices}</select> </td>
+                <td className="ColumnChoiceField"> <select disabled={!enabledMeridian} style={{width: "100%"}} value={choiceMeridian} name="meridian" onChange={this.props.handleChangeMeridian}>{meridianChoices}</select> </td>
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="projection">Projection:</label> </td>

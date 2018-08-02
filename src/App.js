@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import PointManager from './containers/PointManager';
 import Advanced from './containers/Advanced';
+import Austrian from './containers/Austrian';
 
 class App extends Component {
 
@@ -24,12 +25,14 @@ class App extends Component {
           <ul>
             <li><Link to="/points">PointManager</Link></li>
             <li><Link to="/advanced">Advanced Mode</Link></li>
+            <li><Link to="/austrian">Austrian Mode</Link></li>
           </ul>
         </nav>
         
         <div>
           <Route path="/points" component={PointManager} />
           <Route path="/advanced" component={Advanced} />
+          <Route path="/austrian" component={Austrian} />
         </div>
 
         < br/>

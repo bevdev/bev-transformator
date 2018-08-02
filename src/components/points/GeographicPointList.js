@@ -19,12 +19,12 @@ const GeographicPointList = (props) => {
   }
   return ( 
     <div>
-      <h2>GeographicPointList</h2>
+      {/* <h2>GeographicPointList</h2> */}
       <table className="TableDefault">
         <thead>
           <tr>
             <th className="ColumnPointName">Name</th>
-            <th className="ColumnPointValue">Lonitude</th>
+            <th className="ColumnPointValue">Longitude</th>
             <th className="ColumnPointValue">Latitude</th>
             <th className="ColumnPointValue">Elevation</th>
           </tr>
