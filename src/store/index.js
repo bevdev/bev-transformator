@@ -2,8 +2,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from './reducers'
+import { saveToLocalStorageMiddleware, loadStateFromLocalStorage } from './middleware';
 
 const loggerMiddleware = createLogger();
+
+const persistedState = loadStateFromLocalStorage();
+console.log(persistedState);
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -14,9 +18,12 @@ const composeEnhancers =
 
 const enhancer = composeEnhancers(
     applyMiddleware(
-        thunkMiddleware, loggerMiddleware
+        thunkMiddleware, loggerMiddleware,
+        saveToLocalStorageMiddleware
     )
 )
-const store = createStore( rootReducer, enhancer );
+
+const store = createStore( rootReducer, persistedState, enhancer );
+
 
 export default store;
