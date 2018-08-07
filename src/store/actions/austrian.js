@@ -30,6 +30,20 @@ function changeCrs(crs, side) {
       projection: constants.PROJ_MGI_GK34,
       heightSystem: constants.HEIGHT_USAGE,
     };
+    case constants.CRS_MGI_GK_AUTO: return {
+      frame: constants.FRAME_MGI,
+      ellps: constants.ELLPS_BESSEL,
+      meridian: constants.MERIDIAN_GREENWICH,
+      projection: constants.PROJ_MGI_AUTO,
+      heightSystem: constants.HEIGHT_USAGE,
+    }
+    case constants.CRS_MGI_LACC: return {
+      frame: constants.FRAME_MGI,
+      ellps: constants.ELLPS_BESSEL,
+      meridian: constants.MERIDIAN_GREENWICH,
+      projection: constants.PROJ_LAMBERT,
+      heightSystem: constants.HEIGHT_USAGE,
+    }
     case constants.CRS_ETRS_ECEF: return {
       frame: constants.FRAME_ETRS2000,
       ellps: constants.ELLPS_NONE,

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Route } from "react-router-dom";
 
-import logo from './logo.svg';
 import './App.css';
 import PointManager from './containers/PointManager';
 import Advanced from './containers/Advanced';
 import Austrian from './containers/Austrian';
+import BevLogo from './asset/images/BEV-LOGO.JPG';
 
 class App extends Component {
 
@@ -13,12 +13,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <img src={BevLogo} className="App-logo" alt="logo" />
+          <h1 className="App-title">BEV Transformator</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        <br />
 
         <nav>
           <button><Link to="/points">PointManager</Link></button>

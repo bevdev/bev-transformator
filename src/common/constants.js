@@ -2,6 +2,7 @@ export const CRS_MGI_GK_M28 = "BEV::530028";
 export const CRS_MGI_GK_M31 = "BEV::530031";
 export const CRS_MGI_GK_M34 = "BEV::530034";
 export const CRS_MGI_GK_AUTO = "BEV::530099";
+export const CRS_MGI_LACC = "BEV::534001";
 export const CRS_ETRS_ECEF = "BEV::500002";
 export const CRS_ETRS_LPH = "BEV::500004";
 export const CRS_ETRS_UTM_32N = "BEV::520321";

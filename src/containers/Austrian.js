@@ -113,6 +113,7 @@ const FormCrs = (props) => {
       choicesPrj.push({id: constants.PROJ_MGI_GK28, name: "MGI_GK_M28"});
       choicesPrj.push({id: constants.PROJ_MGI_GK31, name: "MGI_GK_M31"});
       choicesPrj.push({id: constants.PROJ_MGI_GK34, name: "MGI_GK_M34"});
+      choicesPrj.push({id: constants.PROJ_LAMBERT, name: "MGI_GK_LAMBERT"});
       break;
     case constants.ELLPS_GRS80:
       choicesPrj.push({id: constants.PROJ_UTM32N, name: 'ETRS_UTM_32N'});
@@ -124,7 +125,7 @@ const FormCrs = (props) => {
 
   const choicesCrsEtrf = [];
   choicesCrsEtrf.push({value: constants.CRS_ETRS_ECEF, text: 'X, Y, Z (ECEF)'});
-  choicesCrsEtrf.push({value: constants.CRS_ETRS_LPH, text: 'Longitude, Latitude, Elevation'});
+  choicesCrsEtrf.push({value: constants.CRS_ETRS_LPH, text: 'Longitude, Latitude, Elevation (Greenwich)'});
   choicesCrsEtrf.push({value: constants.CRS_ETRS_UTM_32N, text: 'RW, HW, Hö (UTM 32N)'});
   choicesCrsEtrf.push({value: constants.CRS_ETRS_UTM_33N, text: 'RW, HW, Hö (UTM 33N)'});
   choicesCrsEtrf.push({value: constants.CRS_ETRS_LACC, text: 'RW, HW, Hö (Lambert)'});
@@ -133,6 +134,7 @@ const FormCrs = (props) => {
   choicesCrsMgi.push({value: constants.CRS_MGI_GK_M28, text: 'RW, HW, Hö (GK M28)'});
   choicesCrsMgi.push({value: constants.CRS_MGI_GK_M31, text: 'RW, HW, Hö (GK M31)'});
   choicesCrsMgi.push({value: constants.CRS_MGI_GK_M34, text: 'RW, HW, Hö (GK M34)'});
+  choicesCrsMgi.push({value: constants.CRS_MGI_LACC, text: 'RW, HW, Hö (Lambert)'})
   if (props.side === 'target') {
     choicesCrsMgi.push({value: constants.CRS_MGI_GK_AUTO, text: 'RW, HW, Hö (GK AUTO)'});
   }
