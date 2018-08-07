@@ -26,19 +26,23 @@ class CRS extends Component {
     const ellpsChoices = ellpsChoiceArray.map( obj => {
       return <option key={obj.id} value={obj.id}>{obj.name}</option>
     });
-    ellpsChoices.unshift(<option key="NaN" value="">-- No Ellipsoid --</option>)
+    const allowNoEllps = this.props.allowNoEllps !== undefined ? this.props.allowNoEllps : true;
+    if (allowNoEllps) ellpsChoices.unshift(<option key="NaN" value="">-- No Ellipsoid --</option>)
 
     const meridianChoiceArray = this.props.meridianChoices ? this.props.meridianChoices : this.props.meridianList;
     const meridianChoices = meridianChoiceArray.map( obj => {
       return <option key={obj.id} value={obj.id}>{obj.name}</option>
     });
-    meridianChoices.unshift(<option key="NaN" value="">-- No Meridian --</option>)
+    let allowNoMeridian = this.props.allowNoMeridian ? this.props.allowNoMeridian : true;
+    if (this.props.ellps) allowNoMeridian = false;
+    if (allowNoMeridian) meridianChoices.unshift(<option key="NaN" value="">-- No Meridian --</option>)
 
     const projectionChoiceArray = this.props.projectionChoices ? this.props.projectionChoices : this.props.projectionList;
     const projectionChoices = projectionChoiceArray.map( obj => {
       return <option key={obj.id} value={obj.id}>{obj.name}</option>
     });
-    projectionChoices.unshift(<option key="NaN" value="">-- No Projection --</option>)
+    const allowNoProjection = this.props.allowNoProjection !== undefined ? this.props.allowNoProjection : true;
+    if (allowNoProjection) projectionChoices.unshift(<option key="NaN" value="">-- No Projection --</option>)
 
     const choiceFrame = this.props.frame;
     const choiceEllps = this.props.ellps;
@@ -46,7 +50,9 @@ class CRS extends Component {
     const choiceProjection = this.props.projection;
     const choiceEpoch = this.props.epoch;
 
+    const enableFrame = this.props.enableFrame !== undefined ? this.props.enableFrame: true;
     const enableEpoch = this.props.enableEpoch !== undefined ? this.props.enableEpoch : true;
+    const enableEllps = this.props.enableEllps !== undefined ? this.props.enableEllps: true;
 
     let enableMeridian = this.props.enableMeridian !== undefined ? this.props.enableMeridian : true;
     enableMeridian = (enableMeridian && this.props.ellps) ? true : false;
@@ -60,15 +66,15 @@ class CRS extends Component {
             <tbody>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="frame">Frame:</label> </td>
-                <td className="ColumnChoiceField"> <select style={{width: "100%"}} value={choiceFrame} name="frame" onChange={this.props.handleChangeFrame} required>{frameChoices}</select> </td>
+                <td className="ColumnChoiceField"> <select style={{width: "100%"}} value={choiceFrame} name="frame" onChange={this.props.handleChangeFrame} required disabled={!enableFrame}>{frameChoices}</select> </td>
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="epoch">Epoch:</label> </td>
-                <td className="ColumnChoiceField"> <input type="text" style={{width: "100%"}} value={choiceEpoch} name="epoch" onChange={this.props.handleChangeEpoch} required disabled={!enableEpoch} /> </td>
+                <td className="ColumnChoiceField" style={{paddingRight: "5px"}}> <input type="text" style={{width: "100%"}} value={choiceEpoch} name="epoch" onChange={this.props.handleChangeEpoch} required disabled={!enableEpoch} /> </td>
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="ellipsoid">Ellipsoid:</label> </td>
-                <td className="ColumnChoiceField"> <select style={{width: "100%"}} value={choiceEllps} name="ellipsoid" onChange={this.props.handleChangeEllps}>{ellpsChoices}</select> </td>
+                <td className="ColumnChoiceField"> <select style={{width: "100%"}} value={choiceEllps} name="ellipsoid" onChange={this.props.handleChangeEllps} disabled={!enableEllps}>{ellpsChoices}</select> </td>
               </tr>
               <tr>
                 <td className="ColumnPointName"> <label htmlFor="merdian">Meridian:</label> </td>

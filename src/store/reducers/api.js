@@ -14,7 +14,7 @@ const initialState = {
         { id: constants.ELLPS_GRS80, name: 'GRS80'}
     ],
     meridianList : [
-        { id: constants.MERIDIAN_GREENWICH, name: "Greenwhich"},
+        { id: constants.MERIDIAN_GREENWICH, name: "Greenwich"},
         { id: constants.MERIDIAN_FERRO, name: 'Ferro'}
     ],
     prjList : [
@@ -23,9 +23,9 @@ const initialState = {
         { id: constants.PROJ_MGI_GK34, name: 'MGI_GK_M34'},
     ],
     heightSystemList: [
-        // { id: constants.HEIGHT_ELLPS, name: 'Ellipsoidic'},
-        // { id: constants.HEIGHT_ORTHO, name: 'Orthometric'},
-        // { id: constants.HEIGHT_USAGE, name: 'Common used'},
+        { id: constants.HEIGHT_ELLPS, name: 'Ellipsoidisch'},
+        { id: constants.HEIGHT_ORTHO, name: 'Orthometrisch'},
+        { id: constants.HEIGHT_USAGE, name: 'Gebrauchshöhe'},
     ],
     transformationMethodList: [
         { id: constants.TM_GIS_GRID, name: 'GIS Grid (sigma: 0.15m)'},

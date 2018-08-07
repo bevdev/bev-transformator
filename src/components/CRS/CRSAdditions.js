@@ -16,7 +16,8 @@ class CRSAdditions extends Component {
     const choicesHeightSystem = arrayChoicesHeightSystem.map( obj => {
       return <option key={obj.id} value={obj.id}>{obj.name}</option>
     });
-    choicesHeightSystem.unshift(<option key="NaN" value="">-- No Height System --</option>)
+    const allowNoHeight = this.props.allowNoHeight !== undefined ? this.props.allowNoHeight : true;
+    if (allowNoHeight) choicesHeightSystem.unshift(<option key="NaN" value="">-- No Height System --</option>);
     const choiceHeightSystem = this.props.heightSystem;
 
     const enableTransformationMethod = this.props.enableTransformationMethod !== undefined ? this.props.enableTransformationMethod : true;
@@ -30,7 +31,7 @@ class CRSAdditions extends Component {
     if (!this.props.hideTransformationMethod) {
       rowTransformationMethod = (<tr>
         <td className="ColumnPointName"> <label htmlFor="transformationMethod">Transformation Method:</label> </td>
-        <td className="ColumnChoiceField"> <select style={{width: "100%"}} value={choiceTransformationMethod} name="transformationMethod" onChange={this.props.handleChangeTransormationMethod} disabled={!enableTransformationMethod}>{choicesTransformationMethod}</select> </td>
+        <td className="ColumnChoiceField"> <select style={{width: "100%"}} value={choiceTransformationMethod} name="transformationMethod" onChange={this.props.handleChangeTransformationMethod} disabled={!enableTransformationMethod}>{choicesTransformationMethod}</select> </td>
       </tr>);
     }
 

@@ -55,7 +55,7 @@ class Advanced extends Component {
         this.props.onInit();
     }
 
-    onHandleChange(event, side, attr) {
+    onHandleChange(value, side, attr) {
         const handlers = {
             target: {
                 frame: this.props.onChangeTargetFrame,
@@ -73,7 +73,7 @@ class Advanced extends Component {
             }
         }
         const handler = handlers[side][attr];
-        if (!event.target.value) {
+        if (!value) {
             if (side === "target") {
                 if (this.props.targetProjection) {
                     const pHandler = handlers[side]['projection']
@@ -95,8 +95,7 @@ class Advanced extends Component {
                 }
             }
         }
-
-        return handler(event.target.value)
+        return handler(value)
     }
 
     render() {
@@ -118,11 +117,11 @@ class Advanced extends Component {
                   meridian={this.props.sourceMeridian}
                   projection={this.props.sourceProjection}
                   epoch={this.props.sourceEpoch}
-                  handleChangeEpoch={event => this.onHandleChange(event, "source", "epoch")}
-                  handleChangeFrame={event => this.onHandleChange(event, "source", "frame")}
-                  handleChangeEllps={event => this.onHandleChange(event, "source", "ellps")}
-                  handleChangeMeridian={event => this.onHandleChange(event, "source", "meridian")}
-                  handleChangeProjection={event => this.onHandleChange(event, "source", "projection")}/>
+                  handleChangeEpoch={event => this.onHandleChange(event.target.value, "source", "epoch")}
+                  handleChangeFrame={event => this.onHandleChange(event.target.value, "source", "frame")}
+                  handleChangeEllps={event => this.onHandleChange(event.target.value, "source", "ellps")}
+                  handleChangeMeridian={event => this.onHandleChange(event.target.value, "source", "meridian")}
+                  handleChangeProjection={event => this.onHandleChange(event.target.value, "source", "projection")}/>
 
                 <h2>Target CRS</h2>
                 <CRS 
@@ -131,11 +130,11 @@ class Advanced extends Component {
                   meridian={this.props.targetMeridian}
                   projection={this.props.targetProjection}
                   epoch={this.props.targetEpoch}
-                  handleChangeEpoch={event => this.onHandleChange(event, "target", "epoch")}
-                  handleChangeFrame={event => this.onHandleChange(event, "target", "frame")}
-                  handleChangeEllps={event => this.onHandleChange(event, "target", "ellps")}
-                  handleChangeMeridian={event => this.onHandleChange(event, "target", "meridian")}
-                  handleChangeProjection={event => this.onHandleChange(event, "target", "projection")}/>
+                  handleChangeEpoch={event => this.onHandleChange(event.target.value, "target", "epoch")}
+                  handleChangeFrame={event => this.onHandleChange(event.target.value, "target", "frame")}
+                  handleChangeEllps={event => this.onHandleChange(event.target.value, "target", "ellps")}
+                  handleChangeMeridian={event => this.onHandleChange(event.target.value, "target", "meridian")}
+                  handleChangeProjection={event => this.onHandleChange(event.target.value, "target", "projection")}/>
                 <h2>Zu Transformierende Punkte</h2>
                 {pointManager}
                 <br />

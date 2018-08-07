@@ -8,13 +8,13 @@ const initialState = {
     sourceHeightSystem : constants.HEIGHT_ELLPS,
     sourceEllps : constants.ELLPS_GRS80,
     sourceMeridian: constants.MERIDIAN_GREENWICH,
-    sourceEpoch: 2002.56,
+    sourceEpoch: constants.EPOCH_BEV,
     targetFrm : constants.FRAME_MGI,
     targetPrj : constants.PROJ_MGI_GK34,
     targetHeightSystem : constants.HEIGHT_USAGE,
     targetEllps : constants.ELLPS_BESSEL,
     targetMeridian: constants.MERIDIAN_FERRO,
-    targetEpoch: 2002.56,
+    targetEpoch: constants.EPOCH_BEV,
 }
 
 const setTargetFrame = (state, action) => {

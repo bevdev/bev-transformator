@@ -30,6 +30,8 @@ export {
 } from './advanced';
 
 export {
+    setAutTargetCoordinateSystem,
+    setAutSourceCoordinateSystem,
     setAutTargetFrame,
     setAutSourceFrame,
     setAutTargetEllps,
