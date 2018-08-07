@@ -50,3 +50,5 @@ export const VG_GEOID_BESSEL = "AT_GEOID_BESSEL";
 export const VG_HEIGHT = "GV_HoehenGrid";
 export const VG_HEIGHT_PLUS = "GV_HoehenGrid_plus_Geoid";
 export const VG_NONE = "";
+
+export const LOCAL_STORAGE_NAME = 'bevTransformatorState';
